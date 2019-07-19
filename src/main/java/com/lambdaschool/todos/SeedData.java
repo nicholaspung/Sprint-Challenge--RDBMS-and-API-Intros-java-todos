@@ -2,9 +2,16 @@ package com.lambdaschool.todos;
 
 // provided by Vivek Vishwanath
 
+import com.lambdaschool.todos.model.Role;
+import com.lambdaschool.todos.model.User;
+import com.lambdaschool.todos.model.UserRoles;
+import com.lambdaschool.todos.repository.RoleRepository;
+import com.lambdaschool.todos.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 
 @Transactional
 @Component
