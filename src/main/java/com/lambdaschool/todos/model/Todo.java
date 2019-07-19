@@ -22,18 +22,18 @@ public class Todo extends Auditable {
 
     private boolean completed;
 
-    @ManyToOne
-    @JoinColumn(name = "userid")
-    @JsonIgnoreProperties("todos")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userid", nullable = false)
+    @JsonIgnoreProperties({"todos", "hibernateLazyInitializer"})
     private User user;
 
     public Todo() {
     }
 
-    public Todo(String description, Date datestarted, boolean completed, User user) {
+    public Todo(String description, Date datestarted, User user) {
         this.description = description;
         this.datestarted = datestarted;
-        this.completed = completed;
+        this.completed = false;
         this.user = user;
     }
 

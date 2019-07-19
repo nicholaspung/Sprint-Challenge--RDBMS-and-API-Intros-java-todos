@@ -33,7 +33,7 @@ public class User extends Auditable
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("user")
-    ArrayList<Todo> todos = new ArrayList<>();
+    private List<Todo> todos = new ArrayList<>();
 
     public User()
     {
@@ -106,5 +106,13 @@ public class User extends Auditable
             rtnList.add(new SimpleGrantedAuthority(myRole));
         }
         return rtnList;
+    }
+
+    public List<Todo> getTodos() {
+        return todos;
+    }
+
+    public void setTodos(ArrayList<Todo> todos) {
+        this.todos = todos;
     }
 }

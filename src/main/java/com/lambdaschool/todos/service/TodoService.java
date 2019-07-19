@@ -1,7 +1,7 @@
 package com.lambdaschool.todos.service;
 
-public interface TodoService {
-    void addTodo(int userid);
+import com.lambdaschool.todos.model.Todo;
 
-    void updateTodo(int todoid);
+public interface TodoService {
+    Todo update(Todo todo, long todoid);
 }

@@ -1,5 +1,6 @@
 package com.lambdaschool.todos.service;
 
+import com.lambdaschool.todos.model.Todo;
 import com.lambdaschool.todos.model.User;
 import com.lambdaschool.todos.model.UserRoles;
 import com.lambdaschool.todos.repository.RoleRepository;
@@ -96,6 +97,19 @@ public class UserServiceImpl implements UserDetailsService, UserService
         {
             throw new EntityNotFoundException(name);
         }
+    }
+
+    @Transactional
+    public User assign(Todo todo, long id) throws EntityNotFoundException
+    {
+        User user = userrepos.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(Long.toString(id)));
+
+        if (todo.getUser() != null) {
+            todo.setUser(user);
+        }
+
+        return user;
     }
 
     @Transactional
