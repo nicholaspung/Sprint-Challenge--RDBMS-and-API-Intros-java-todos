@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/todos")
 public class TodosController {
@@ -17,4 +19,14 @@ public class TodosController {
     public ResponseEntity<?> updateTodo(@RequestBody Todo todo, @PathVariable long todoid) {
         return new ResponseEntity<>(todoService.update(todo, todoid), HttpStatus.OK);
     }
+
+    // Testing
+    @GetMapping(value = "/todos",
+            produces = {"application/json"})
+    public ResponseEntity<?> listAllQuotes()
+    {
+        List<Todo> allQuotes = todoService.findAll();
+        return new ResponseEntity<>(allQuotes, HttpStatus.OK);
+    }
+    //
 }

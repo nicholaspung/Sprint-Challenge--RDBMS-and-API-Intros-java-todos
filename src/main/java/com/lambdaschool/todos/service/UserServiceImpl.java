@@ -4,6 +4,7 @@ import com.lambdaschool.todos.model.Todo;
 import com.lambdaschool.todos.model.User;
 import com.lambdaschool.todos.model.UserRoles;
 import com.lambdaschool.todos.repository.RoleRepository;
+import com.lambdaschool.todos.repository.ToDoRepository;
 import com.lambdaschool.todos.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -28,6 +29,9 @@ public class UserServiceImpl implements UserDetailsService, UserService
 
     @Autowired
     private RoleRepository rolerepos;
+
+    @Autowired
+    private ToDoRepository todorepos;
 
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
@@ -107,8 +111,7 @@ public class UserServiceImpl implements UserDetailsService, UserService
 
         todo.setUser(user);
 
-
-        return todo;
+        return todorepos.save(todo);
     }
 
     @Transactional

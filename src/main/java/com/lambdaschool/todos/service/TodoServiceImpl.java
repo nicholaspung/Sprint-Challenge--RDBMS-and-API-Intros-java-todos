@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service(value = "todoService")
 public class TodoServiceImpl implements TodoService {
@@ -25,5 +27,12 @@ public class TodoServiceImpl implements TodoService {
         }
 
         return todorepos.save(updateTodo);
+    }
+
+    @Override
+    public List<Todo> findAll() {
+        List<Todo> list = new ArrayList<>();
+        todorepos.findAll().iterator().forEachRemaining(list::add);
+        return list;
     }
 }
