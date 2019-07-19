@@ -34,6 +34,7 @@ public class UsersController {
     }
     //
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping(produces = {"application/json"})
     public ResponseEntity<?> addUser(@Valid @RequestBody User newuser) throws URISyntaxException {
         newuser = userService.save(newuser);
@@ -69,6 +70,7 @@ public class UsersController {
         return new ResponseEntity<>(userService.assign(newtodo, userid), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping(value = "/userid/{userid}", produces = {"application/json"})
     public ResponseEntity<?> deleteUser(@PathVariable long userid) {
         userService.delete(userid);
