@@ -37,6 +37,10 @@ public class Todo extends Auditable {
         this.user = user;
     }
 
+    public long getTodoid() {
+        return todoid;
+    }
+
     public String getDescription() {
         return description;
     }
