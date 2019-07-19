@@ -13,7 +13,7 @@ public class TodosController {
     @Autowired
     private TodoService todoService;
 
-    @PostMapping(value = "/todoid/{todoid}")
+    @PutMapping(value = "/todoid/{todoid}")
     public ResponseEntity<?> updateTodo(@RequestBody Todo todo, @PathVariable long todoid) {
         return new ResponseEntity<>(todoService.update(todo, todoid), HttpStatus.OK);
     }

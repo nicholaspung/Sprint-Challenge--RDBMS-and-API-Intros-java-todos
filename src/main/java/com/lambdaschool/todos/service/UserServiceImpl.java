@@ -100,16 +100,15 @@ public class UserServiceImpl implements UserDetailsService, UserService
     }
 
     @Transactional
-    public User assign(Todo todo, long id) throws EntityNotFoundException
+    public Todo assign(Todo todo, long id) throws EntityNotFoundException
     {
         User user = userrepos.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(Long.toString(id)));
 
-        if (todo.getUser() != null) {
-            todo.setUser(user);
-        }
+        todo.setUser(user);
 
-        return user;
+
+        return todo;
     }
 
     @Transactional

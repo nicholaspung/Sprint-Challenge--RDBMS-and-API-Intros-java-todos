@@ -19,5 +19,5 @@ public interface UserService {
 
     User update(User user, long id);
 
-    User assign(Todo todo, long id);
+    Todo assign(Todo todo, long id);
 }
